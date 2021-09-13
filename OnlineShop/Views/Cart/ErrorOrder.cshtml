@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "ErrorOrder";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (ViewBag.name != null)
+{
+    @section Styles{
+        <link rel="stylesheet" type="text/css" href="~/wwwroot/css/Landinpaged.css" />
+        <link rel="stylesheet" type="text/css" href="~/wwwroot/css/grid.css" />
+        <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+    }
+}
+else
+{
+    @section Styles{
+        <link rel="stylesheet" type="text/css" href="~/wwwroot/css/Styles.css" />
+        <link rel="stylesheet" type="text/css" href="~/wwwroot/css/grid.css" />
+        <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+    }
+}
+
+<div style="text-align: center; margin: 50px; font-size: 20px; color: red;">
+    Không thể thêm vào giỏ hàng
+</div>
+
+
+

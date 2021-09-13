@@ -1,0 +1,41 @@
+﻿@model Model.EF.DanhMuc
+
+@{
+    ViewBag.Title = "Xóa loại sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div style="margin-top:100px">
+
+    <h3 style="text-align:center">Bạn có chắc chắn muốn xóa loại sản phẩm này?</h3>
+    <div style="width:26%; margin:20px auto 0px auto">
+        <div class="dl-horizontal">
+            <div style="display:block">
+                <b style="margin-right:10px">Mã loại:</b>
+                <span>@Html.DisplayFor(model => model.MaDM)</span>
+            </div>
+            <div style="display:block">
+                <b style="margin-right:10px">Tên loại:</b>
+                <span>@Html.DisplayFor(model => model.TenDM)</span>
+            </div>         
+        </div>
+
+        @using (Html.BeginForm("Delete", "TypeProducts", FormMethod.Post, htmlAttributes: new { @style = "margin-top:20px" }))
+        {
+            @Html.AntiForgeryToken()
+            <input name="maDM" value="@Model.MaDM" hidden />
+            <input name="tenDM" value="@Model.TenDM" hidden />
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Xóa" class="btn btn-default" /> |
+                @Html.ActionLink("Quay lại", "Index")
+            </div>
+        }
+    </div>
+    @if (ViewBag.Error != null)
+    {
+        <br />
+        <div class="alert alert-danger" role="alert">@ViewBag.Error</div>
+    }
+</div>
+

@@ -1,0 +1,11 @@
+﻿@model List<Model.EF.DanhMuc>
+
+<ul class="content_left-nav" style="height: 100%; overflow-y: scroll;">
+    @foreach (var item in Model)
+    {
+        <li class="content_left-nav-item"><a style="padding: .70em 1em;" href="/Home/Products/?maDM=@item.MaDM" class="content_left-nav-item--link">@item.TenDM</a></li>
+    }
+
+
+</ul>
+

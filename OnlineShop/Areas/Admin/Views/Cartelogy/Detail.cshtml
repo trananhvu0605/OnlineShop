@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Model.EF.ChiTiet_HD>
+
+@{
+    ViewBag.Title = "Chi tiết đơn hàng";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div style="margin-top:100px">
+    <h2 style="display: flex; justify-content: center; font-size: 35px; font-weight: 400">Chi tiết đơn hàng</h2>
+
+    <div style="width:27%; margin:20px auto 0px auto">
+        <div class="dl-horizontal">
+            <div style="display:block">
+                <b style="margin-right:10px">Tên khách hàng:</b>
+                <span>@ViewBag.tenkhach</span>
+            </div>
+            <div style="display:block">
+                <b style="margin-right:10px">Địa chỉ:</b>
+                <span>@ViewBag.diachi</span>
+            </div>
+            <div style="display:block">
+                <b style="margin-right:10px">Số điện thoại:</b>
+                <span>@ViewBag.sdt</span>
+            </div>
+            <div style="display:block">
+                <b style="margin-right:10px">Yêu cầu khác:</b>
+                <span>@ViewBag.yeucaukhac</span>
+            </div>
+            <div style="display:block">
+                <b style="margin-right:10px">Tổng tiền:</b>
+                <span>@ViewBag.tongtien</span>
+            </div>
+            <div style="display:block">
+                <b style="margin-right:10px">Ngày mua:</b>
+                <span>@ViewBag.ngaymua</span>
+            </div>
+        </div>
+    </div>
+
+    <table style=" margin: 20px auto;">
+        <tr style="background-color: #dddddd;">
+            <th style="border: 1px solid rgba(0,0,0,0.1); text-align: left; padding: 8px;">Mã sản phẩm</th>
+            <th style="border: 1px solid rgba(0,0,0,0.1); text-align: left; padding: 8px;">Tên sản phẩm</th>
+            <th style="border: 1px solid rgba(0,0,0,0.1); text-align: left; padding: 8px;">Số lượng mua</th>
+            <th style="border: 1px solid rgba(0,0,0,0.1); text-align: left; padding: 8px;">Đơn giá</th>
+            <th style="border: 1px solid rgba(0,0,0,0.1); text-align: left; padding: 8px;">Thành tiền</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            var view = @item.SoLuongMua * @item.SanPham.Gia_HT;
+    <tr style="background-color:#fff">
+        <td style="border: 1px solid rgba(0,0,0,0.1); text-align: left; padding: 8px">@item.MaSP</td>
+        <td style="border: 1px solid rgba(0,0,0,0.1); text-align: left; padding: 8px">@item.Tensanpham</td>
+        <td style="border: 1px solid rgba(0,0,0,0.1); text-align: left; padding: 8px">@item.SoLuongMua</td>
+        <td style="border: 1px solid rgba(0,0,0,0.1); text-align: left; padding: 8px">@Html.DisplayFor(Model => item.SanPham.Gia_HT) VNĐ</td>
+        <td style="border: 1px solid rgba(0,0,0,0.1); text-align: left; padding: 8px">@string.Format("{0:#,###}", view) VNĐ</td>
+    </tr>
+        }
+    </table>
+    <p style="display: block; width: 15%; margin-left: auto; margin-right: auto; margin-top: 20px;">
+        <a href="/Admin/Cartelogy/Edit?MaHD=@ViewBag.mahd">Chỉnh sửa</a>
+        <a href="/Admin/Cartelogy/Index">| Quay lại</a>
+    </p>
+</div>
+

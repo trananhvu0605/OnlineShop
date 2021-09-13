@@ -1,0 +1,71 @@
+﻿@model Model.EF.SanPham
+
+@{
+    ViewBag.Title = "Xóa sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div style="margin-top:100px">
+    <h3 style="text-align:center">Bạn có chắc chắn muốn xóa sản phẩm này?</h3>
+    <div style="width:96%; margin:20px auto 0px auto">
+        <div class="dl-horizontal" style=" margin-top:20px">
+            <div style="display:block">
+                <b style="margin-right:10px">Tên loại sản phẩm:</b>
+                <span>@Html.DisplayFor(model => model.DanhMuc.TenDM)</span>
+            </div>
+            <div style="display:block">
+                <b style="margin-right:10px">Tên sản phẩm:</b>
+                <span>@Html.DisplayFor(model => model.TenSP)</span>
+            </div>
+            <div style="display:block">
+                <b style="margin-right:10px">Ảnh sản phẩm:</b>
+                <span><img src="~/Areas/Admin/Assets/images/sanpham/@Model.Anh" /></span>
+            </div>
+
+            <div style="display:block">
+                <b style="margin-right:10px"> Xuất xứ:</b>
+                <span>@Html.DisplayFor(model => model.Xuat_Xu)</span>
+            </div>
+
+            <div style="display:block">
+                <b style="margin-right:10px"> Điểm bán:</b>
+                <span>@Html.DisplayFor(model => model.Diem_Ban)</span>
+            </div>
+
+            <div style="display:block">
+                <b style="margin-right:10px"> DVT:</b>
+                <span> @Html.DisplayFor(model => model.DVT)</span>
+            </div>
+            <div style="display:block">
+                <b style="margin-right:10px"> Số lượng:</b>
+                <span> @Html.DisplayFor(model => model.SoLuongCo)</span>
+            </div>
+            <div style="display:block">
+                <b style="margin-right:10px">Giá:</b>
+                <span>@Html.DisplayFor(model => model.Gia_HT) VNĐ</span>
+            </div>
+            <div style="display:block">
+                <b style="margin-right:10px">Mô tả:</b>
+                <span>@Html.DisplayFor(model => model.Mo_Ta)</span>
+            </div>
+        </div>
+
+        @using (Html.BeginForm("Delete", "Products", FormMethod.Post, htmlAttributes: new{ @style = "text-align: center;margin-top: 20px;" }))
+        {
+        @Html.AntiForgeryToken()
+        <input name="MaSP" value="@Model.MaSP" hidden />
+        <input name="TenSP" value="@Model.TenSP" hidden />
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Quay lại", "Index")
+        </div>
+        }
+    </div>
+    @if (ViewBag.Error != null)
+    {
+        <br />
+        <div class="alert alert-danger" role="alert">@ViewBag.Error</div>
+    }
+</div>
+
+

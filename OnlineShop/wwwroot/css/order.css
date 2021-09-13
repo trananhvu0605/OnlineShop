@@ -1,0 +1,167 @@
+.header_right-nav-submenu {
+    width: 100%;
+    height: auto;
+    margin-top: -44px;
+    background-color: var(--primary-color);
+    list-style: none;
+    opacity: 0;
+}
+
+.user:hover .header_right-nav-submenu {
+    opacity: 1;
+    transition: all .5s linear;
+}
+
+.header_right-nav-submenu li {
+    width: 100%;
+    /* height: 25px; */
+    margin-top: 10px;
+    line-height: 25px;
+    word-wrap: break-word;
+    padding: 15px 0px;
+    font-size: 14px;
+    text-align: left;
+}
+
+.header_right-nav-submenu li a {
+    text-decoration: none;
+    color: #fff;
+    text-align: center;
+    padding-left: 5px;
+}
+
+.content_right {
+    width: 59%;
+    height: 100%;
+}
+
+.content_right-title {
+    text-align: center;
+    padding-top: 20px;
+    color: var( --primary-color);
+    font-size: 20px;
+}
+
+.content_customer {
+    width: 100%;
+    height: auto;
+    text-align: left;
+}
+
+.form_infor {
+    width: 90%;
+    height: 100%;
+    margin: 20px auto;
+}
+
+.form_infor-input {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.lable {
+    width: 150px;
+    text-align: left;
+}
+
+.form_infor-input input {
+    width: 60%;
+    height: 20px;
+}
+
+.row_infor-link {
+    text-decoration: none;
+}
+
+.form_infor-input textarea {
+    margin: 0px;
+    width: 60%;
+    height: 78px;
+    resize: none;
+}
+
+.form_infor-input span {
+    width: 50%;
+    height: 20px;
+    text-align: left;
+}
+
+.form_infor-submit {
+    margin-right: 0px;
+    float: right;
+    margin-top: 26px;
+}
+
+.form_infor-submit input {
+    padding: 6px 16px;
+    cursor: pointer;
+    color: #fff;
+    background: var( --primary-color);
+    outline: none;
+}
+
+.orderProInfor {
+    width: 40%;
+    text-align: left;
+    position: relative;
+}
+
+.orderProInfor {
+    /* text-align: center; */
+    padding-top: 30px;
+    color: var( --primary-color);
+    font-size: 18px;
+}
+
+.orderProInfor hr {
+    margin: 15px 0px;
+    color: aliceblue;
+    opacity: .5;
+}
+
+.Pro_number {
+    width: 100%;
+    height: auto;
+    margin-bottom: 30px;
+}
+
+.Pro_number b {
+    font-size: 12px;
+}
+
+.Pro_number-row {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.row_infor {
+    width: 70%;
+}
+
+.row_infor b {
+    color: #000;
+}
+
+.row_price {
+    font-size: 13px;
+}
+
+.form_infor-submit-back {
+    margin-left: 5%;
+    margin-top: 10px;
+}
+
+.form_infor-submit-back input {
+    padding: 5px 15px;
+    cursor: pointer;
+    color: #fff;
+    background: var( --primary-color);
+    outline: none;
+}
+
+.Pro_number-row {
+    margin-top: 25px;
+    font-size: 15px;
+}

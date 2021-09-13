@@ -1,0 +1,200 @@
+      :root {
+         --white-color: #fff;
+         --black-color: #000;
+         --text-color: #333;
+         --boder-color: #dbdbdb;
+         --primary-color: #92278f;
+         --header-height: 180px;
+         --header-height-brand: 110px;
+         --header-with-search-height: calc(var(--header-height) - var( --header-height-brand));
+         ;
+     }
+     
+     .header_right-nav-submenu {
+         width: 100%;
+         height: auto;
+         margin-top: -44px;
+         background-color: var(--primary-color);
+         list-style: none;
+         opacity: 0;
+     }
+     
+     .user:hover .header_right-nav-submenu {
+         opacity: 1;
+         transition: all .5s linear;
+     }
+     
+     .header_right-nav-submenu li {
+         width: 100%;
+         /* height: 25px; */
+         margin-top: 10px;
+         line-height: 25px;
+         word-wrap: break-word;
+         padding: 15px 0px;
+         font-size: 14px;
+         text-align: left;
+     }
+     
+     .header_right-nav-submenu li a {
+         text-decoration: none;
+         color: #fff;
+         text-align: center;
+         padding-left: 5px;
+     }
+     
+     .content_card {
+         width: 90%;
+         height: 500px;
+         /* background-color: red; */
+         margin: 0 auto;
+     }
+     
+     .content_cart-home {
+         text-decoration: none;
+         color: var(--primary-color);
+         font-weight: 700;
+     }
+     
+     .fa-angle-double-right {
+         color: var(--primary-color);
+     }
+     
+     .content_cart-title {
+         text-decoration: none;
+         color: #FFC312;
+         font-size: 17px;
+         font-weight: 700;
+     }
+     
+     .title_block-product {
+         margin-top: 20px;
+         text-transform: uppercase;
+         color: var(--primary-color);
+     }
+     
+     .title_block-product hr {
+         width: 82%;
+         float: right;
+     }
+     
+     .shopcart_product-table {
+         width: 100%;
+         height: 200px;
+         background-color: aliceblue;
+         margin-top: 20px;
+     }
+     
+     .table-striped {
+         width: 100%;
+     }
+     
+     .table {
+         margin-bottom: 18px;
+     }
+     
+     .head-tr {
+         background-color: #FFC312;
+         height: 38px;
+         color: #ffffff;
+         font-size: 15px;
+         text-align: center;
+     }
+     
+     .th-head-right {
+         border-top-right-radius: 4px;
+     }
+     
+     .tr_product {
+         height: 96px;
+         border-left: 1px solid #d1d1d1;
+         border-right: 1px solid #d1d1d1;
+     }
+     
+     .table>tbody>tr>td {
+         vertical-align: middle;
+         text-align: center;
+         border-top: none;
+     }
+     
+     .product_image {
+         width: 100px;
+         height: 100%;
+     }
+     
+     .name_product {
+         width: 18%;
+     }
+     
+     .name_product h5 {
+         color: #FFC312;
+     }
+     
+     .price-product {
+         color: #f00000;
+         font-size: 15px;
+     }
+     
+     .numbers-pro {
+         border: 1px solid #cacaca;
+         width: 58px;
+         height: 22px;
+         text-align: center;
+         color: #202020;
+         font-size: 15px;
+         font-family: "MyriadPro-Regular";
+     }
+     
+     .fa-times {
+         color: #ccc;
+     }
+     
+     .fa-times:hover {
+         color: red;
+         cursor: pointer;
+     }
+     
+     .total {
+         width: 100%;
+         margin-top: 30px;
+         display: flex;
+         justify-content: space-between;
+     }
+     
+     .total_title {
+         width: 30%;
+         padding-left: 40px;
+     }
+     
+     .total_title h4 {
+         color: #FFC312;
+         font-size: 17px;
+         letter-spacing: .5px;
+     }
+     
+     .sumTotal {
+         width: 15%;
+         color: #f00000;
+     }
+     
+     .back {
+         width: 30%;
+         padding-left: 40px;
+     }
+     
+     .order_pro a {
+         text-decoration: none;
+         padding: 10px 20px;
+         background-color: var(--primary-color);
+         color: #fff;
+         text-transform: uppercase;
+         font-weight: 600;
+     }
+     
+     .order .fa-angle-double-right {
+         color: #fff;
+     }
+     
+     .effect_a:hover {
+         background: #FFC312;
+         transition: all .3s;
+     }

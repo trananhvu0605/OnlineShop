@@ -1,0 +1,99 @@
+﻿@model Model.EF.SanPham
+@{
+    ViewBag.Title = "DetailProc";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Styles{
+    <link rel="stylesheet" type="text/css" href="~/wwwroot/css/detail.css" />
+}
+<div class="content">
+    <div class="content_left" style="height: 500px; overflow-y: hidden;">
+        <div class="title_content-left">
+
+            <h4> <i class="fas fa-bars"></i> DANH MỤC SẢN PHẨM</h4>
+        </div>
+        @{
+            Html.RenderAction("ProductCartelogy", "Home");
+        }
+
+    </div>
+    <div class="conten_right">
+        <div class="content_right-img">
+            <img src="~/wwwroot/img/@Model.Anh" />
+
+        </div>
+        <div class="content_right-detail">
+            <h2>@Model.TenSP - @Model.DanhMuc.TenDM</h2>
+            <div class="product_details">
+                <p><span>Mã sản phẩm</span>: @Model.MaSP</p>
+
+            </div>
+            <div class="product_details">
+                <p><span>Xuất xứ</span>: @Model.Xuat_Xu</p>
+
+            </div>
+            @if (Model.SoLuongCo > 0)
+            {
+                <div class="product_details">
+                    <p><span>Tình trạng</span>: Còn hàng</p>
+
+                </div>
+            }
+            else
+            {
+                <div class="product_details">
+                    <p><span>Tình trạng</span>: Hết hàng</p>
+
+                </div>
+            }
+            <div class="product_details">
+                <p style="display: flex;">
+                    <span>Điểm bán</span>: <span> @Model.Diem_Ban </span>
+                </p>
+
+            </div>
+            <div class="product_details">
+                <p>
+                    <span>Đơn vị tính</span>
+                    @if (Model.DVT == true)
+                    {
+                        <span>: 1 Kg</span>
+                    }
+                    else
+                    {
+                        <span>: 2 Kg</span>
+                    }
+                </p>
+
+            </div>
+            <div class="price_gifts">
+                <span class="promotion-price">@Html.DisplayFor(Model => Model.Gia_HT) VNĐ</span>
+
+
+            </div>
+            <div class="product_details">
+                <p style="text-align: center; height: 40px; line-height: 40px; background-color: #92278f; width: 80%; border-radius: 8px;"><a style="text-decoration: none; color: #fff; font-size: 18px;" href="/Cart/Additem?productId=@Model.MaSP&quantity=1" class="product_1-shopping">Thêm vào giỏ</a></p>
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+</div>
+<div class="infor_product">
+    <div class="infor_product-detail">
+
+        <h4>1.Mô tả</h4>
+        <p>@Model.Mo_Ta</p>
+    </div>
+    <div class="infor_product-detail">
+
+        <h4>2. Xuất xứ </h4>
+        <p>- Xuất xứ: @Model.Xuat_Xu</p>
+
+    </div>
+</div>
+

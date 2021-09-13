@@ -1,0 +1,91 @@
+﻿@model IEnumerable<Model.EF.SanPham>
+@{
+    ViewBag.Title = "Quản lý sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<!-- MAIN CONTENT-->
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- DATA TABLE -->
+                    <h3 class="title-5 m-b-35">Quản lý sản phẩm</h3>
+                    <div class="table-data__tool">
+                        <div class="table-data__tool-left">
+                            <div class="rs-select2--light rs-select2--md">
+                                <select class="js-select2" name="property" onchange="change()">
+                                    <option selected="selected">Tất cả</option>
+                                    <option value="MaSP">Mã sản phẩm</option>
+                                    <option value="TenSP">Tên sản phẩm</option>
+                                    <option value="Gia_HT">Giá</option>
+                                </select>
+                                <div class="dropDownSelect2"></div>
+                            </div>
+                            <button class="au-btn-filter">
+                                <i class="zmdi zmdi-filter-list"></i>Sắp xếp
+                            </button>
+                        </div>
+                        <div class="table-data__tool-right">
+                            <a style="color:#fff" href="/Admin/Products/Create" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                                <i class="zmdi zmdi-plus"></i>Thêm sản phẩm
+                            </a>
+                        </div>
+                    </div>
+                    <div class="table-responsive table--no-card m-b-40">
+                        <table class="table table-borderless table-striped table-earning">
+                            <thead>
+                                <tr>
+                                    <th>Mã sản phẩm</th>
+                                    <th>Tên sản phẩm</th>
+                                    <th>Hình ảnh</th>
+                                    <th>Giá</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.MaSP</td>
+                                        <td>@item.TenSP</td>
+                                        <td>
+                                            <img style="max-width: 100%; width: 150px; " class="image_product" src="~/Areas/Admin/Assets/images/sanpham/@item.Anh" />
+                                        </td>
+                                        <td>@Html.DisplayFor(Model => item.Gia_HT) VNĐ</td>
+                                        <td>
+                                            <div class="table-data-feature">
+                                                <a href="/Admin/Products/Detail?MaSP=@item.MaSP" class="item" data-toggle="tooltip" data-placement="top" title="Xem">
+                                                    <i class="zmdi zmdi-eye"></i>
+                                                </a>
+                                                <a href="/Admin/Products/Edit?MaSP=@item.MaSP" class="item" data-toggle="tooltip" data-placement="top" title="Sửa">
+                                                    <i class="zmdi zmdi-edit"></i>
+                                                </a>
+                                                <a href="/Admin/Products/Delete?MaSP=@item.MaSP" class="item" data-toggle="tooltip" data-placement="top" title="Xóa">
+                                                    <i class="zmdi zmdi-delete"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<form class="changekeyform" action="/Admin/Products/Index" method="get">
+    <input type="text" class="changekey" hidden name="q" />
+</form>
+<script>
+    function change() {
+        var value = document.querySelector('.js-select2').value;
+        var q = document.querySelector('.changekey');
+        q.value = value;
+        document.querySelector('.changekeyform').submit();
+    }
+</script>

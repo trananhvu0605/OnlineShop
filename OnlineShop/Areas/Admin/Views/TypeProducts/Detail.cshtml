@@ -1,0 +1,27 @@
+﻿@model Model.EF.DanhMuc
+
+@{
+    ViewBag.Title = "Chi tiết loại sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div style="margin-top:100px">
+    <h2 style="display: flex; justify-content: center; font-size: 35px; font-weight: 400">Chi tiết loại sản phẩm</h2>
+
+    <div style="width:26%; margin:20px auto 0px auto">
+        <div class="dl-horizontal">
+            <div style="display:block">
+                <b style="margin-right:10px">Mã danh mục:</b>
+                <span>@Html.DisplayFor(model => model.MaDM)</span>
+            </div>
+            <div style="display:block">
+                <b style="margin-right:10px">Tên danh mục:</b>
+                <span>@Html.DisplayFor(model => model.TenDM)</span>
+            </div>
+        </div>
+    </div>
+    <p style="display:block; width:26%; margin-left:auto; margin-right:auto; margin-top: 20px;">
+       <a href="/Admin/TypeProducts/Edit?maDM=@Model.MaDM">Chỉnh sửa</a>
+       <a href="/Admin/TypeProducts/Index">| Quay lại</a>
+    </p>
+</div>
+    

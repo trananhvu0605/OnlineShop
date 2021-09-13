@@ -1,0 +1,46 @@
+﻿@model Model.EF.HoaDon
+
+@{
+    ViewBag.Title = "Cập nhật đơn hàng";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div style="margin-top:80px">
+    <h2 style="display: flex; justify-content: center; font-size: 35px; font-weight: 400">Cập nhật tình trạng hóa đơn</h2>
+
+
+    @using (Html.BeginForm("Edit", "Cartelogy", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <input name="MaHD" hidden value="@Model.MaHD" />
+            <div class="form-group" style="display: flex; align-items: center; width: 76%;">
+                @Html.LabelFor(model => model.Tinh_Trang, "Tình trạng", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Tinh_Trang, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Tinh_Trang, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10" style="display: flex; align-items: center; justify-content: center;">
+                    <input type="submit" style="font-size: 18px; margin-top: 22px; background-color: #7c548f; color: #fff;" value="Cập nhật" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        <a href="/Admin/Cartelogy/Index" style="text-decoration: none; margin-left:20px;">Quay lại</a>
+    </div>
+    @if (ViewBag.Error != null)
+    {
+        <br />
+        <div class="alert alert-danger" role="alert">@ViewBag.Error</div>
+    }
+</div>
+
+
+

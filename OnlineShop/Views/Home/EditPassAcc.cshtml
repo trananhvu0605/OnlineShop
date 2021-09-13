@@ -1,0 +1,62 @@
+﻿@model Model.EF.TaiKhoan
+@{
+    ViewBag.Title = "EditPassAcc";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (ViewBag.name != null)
+{
+    @section Styles{
+        <link rel="stylesheet" type="text/css" href="~/wwwroot/css/detail.css" />
+        <link rel="stylesheet" type="text/css" href="~/wwwroot/css/order.css" />
+    }
+}
+else
+{
+    @section Styles{
+        <link rel="stylesheet" type="text/css" href="~/wwwroot/css/detail.css" />
+        <link rel="stylesheet" type="text/css" href="~/wwwroot/css/order.css" />
+    }
+}
+<div class="content">
+    <div class="content_left" style="height: 500px; overflow-y: hidden;">
+        <div class="title_content-left">
+
+            <h4> <i class="fas fa-bars"></i> DANH MỤC SẢN PHẨM</h4>
+        </div>
+        @{
+            Html.RenderAction("ProductCartelogy", "Home");
+        }
+
+
+    </div>
+    <div class="content_right">
+        <h3 class="content_right-title">Đổi mật khẩu</h3>
+        <div class="content_customer">
+            @using (Html.BeginForm("EditPassAcc", "Home", FormMethod.Post, htmlAttributes: new { @class = "form_infor", @style = "text-align: center;" }))
+            {
+                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(model => model.TenTK, htmlAttributes: new { @class = "text", @placeholder = "Họ tên", @style = "padding-left: 5px;outline: none; ", @hidden = "true" })
+                <div class="form_infor-input">
+                    @Html.LabelFor(model => model.Mat_Khau,"Mật khẩu cũ", htmlAttributes: new { @class = "lable" })
+                   <input name="mkcu" placeholder="Nhập mật khẩu cũ" type="password" style="padding-left: 5px; outline: none;" class="text" />
+
+                </div>
+                <div class="form_infor-input">
+                    @Html.LabelFor(model => model.Mat_Khau, htmlAttributes: new { @class = "lable" })
+                    @Html.PasswordFor(model => model.Mat_Khau, htmlAttributes: new { @class = "text", @placeholder = "Nhập mật khẩu mới", @style = "padding-left: 5px;outline: none; " })
+
+                </div>
+                <button type="submit" style="width: 80px;height: 32px;border: none;background-color: #92278f;color: #fff;font-size: 14px;">
+                    Cập nhật
+                </button>
+                <a href="/Home/Index" style=" text-decoration: none; font-size: 15px;">Hủy bỏ</a>
+            }
+        </div>
+
+
+    </div>
+
+
+
+</div>
+

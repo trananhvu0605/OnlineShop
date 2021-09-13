@@ -1,0 +1,61 @@
+﻿@model PagedList.IPagedList<Model.EF.SanPham>
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (ViewBag.name != null)
+{
+    @section Styles{
+        <link rel="stylesheet" type="text/css" href="~/wwwroot/css/Landinpaged.css" />
+        <link rel="stylesheet" type="text/css" href="~/wwwroot/css/grid.css" />
+        <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+    }
+}
+else
+{
+    @section Styles{
+        <link rel="stylesheet" type="text/css" href="~/wwwroot/css/Styles.css" />
+        <link rel="stylesheet" type="text/css" href="~/wwwroot/css/grid.css" />
+        <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+    }
+}
+<div class="content">
+    <div class="content_left" style="height: 500px; overflow-y: hidden;">
+        <div class="title_content-left">
+
+            <h4> <i class="fas fa-bars"></i> DANH MỤC SẢN PHẨM</h4>
+        </div>
+        @{
+            Html.RenderAction("ProductCartelogy", "Home");
+        }
+
+
+    </div>
+    <div class="conten_right">
+        <div class="conter_right-slide">
+            <img src="~/wwwroot/img/slide1.png" />
+        </div>
+        <div class="content_products">
+            <div class="content_product-row">
+                @foreach (var item in Model)
+                {
+                    <div class="product_1 col col-pc3" style="display: flex; flex-direction: column; justify-content: space-between; height: 300px;">
+                        <div class="product_1-img">
+                            <img src="~/wwwroot/img/@item.Anh" />
+                        </div>
+                        <a style="text-decoration:none;" href="/Home/DetailProc/?maSP=@item.MaSP">@item.TenSP -<br> @item.DanhMuc.TenDM</a>
+                        <p>@Html.DisplayFor(Model => item.Gia_HT) VNĐ</p>
+                        <p><a href="/Cart/Additem?productId=@item.MaSP&quantity=1" class="product_1-shopping">Thêm vào giỏ</a></p>
+                    </div>
+                }
+            </div>
+            <div style="text-align:center">
+                @Html.PagedListPager(Model, page => Url.Action("Index", "Home", new { page }))
+            </div>          
+        </div>
+    </div>
+
+</div>
+
+

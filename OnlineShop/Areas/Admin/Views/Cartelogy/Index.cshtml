@@ -1,0 +1,88 @@
+﻿@model IEnumerable<Model.EF.HoaDon>
+@{
+    ViewBag.Title = "Quản lý đơn hàng";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- DATA TABLE -->
+                    <h3 class="title-5 m-b-35">Quản lý đơn hàng</h3>
+                    <div class="table-data__tool">
+                        <div class="table-data__tool-left">
+                            <div class="rs-select2--light rs-select2--md">
+                                <select class="js-select2" name="property" onchange="change()">
+                                    <option selected="selected">Tất cả</option>
+                                    <option value="Ngay_Mua">Ngày mua</option>
+                                    <option value="MaHD">Mã đơn hàng</option>
+                                </select>
+                                <div class="dropDownSelect2"></div>
+                            </div>
+                            <button class="au-btn-filter">
+                                <i class="zmdi zmdi-filter-list"></i>Sắp xếp
+                            </button>
+                        </div>
+                    </div>
+                    <div class="table-responsive ">
+                        <table class="table table-borderless table-striped table-earning">
+                            <thead>
+                                <tr>
+                                    <th>Mã đơn hàng</th>
+                                    <th>Tên khách hàng</th>
+                                    <th>Địa chỉ nhận hàng</th>
+                                    <th>Tổng tiền</th>
+                                    <th>Ngày mua</th>
+                                    <th>Tình trạng</th>
+                                    <th>Thông tin</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                <tr>
+                                    <td>@item.MaHD</td>
+                                    <td>@item.TenKH</td>
+                                    <td>
+                                        SDT: @item.Sodienthoai <br />
+                                        Địa chỉ: @item.Dia_Chi_Nhan
+                                    </td>
+                                    <td>@item.Tong_Tien</td>
+                                    <td>@item.Ngay_Mua</td>
+                                    <td>@item.Tinh_Trang</td>
+                                    <td>
+                                        <a style="margin-right:10px;" href="/Admin/Cartelogy/Detail?MaHD=@item.MaHD" class="item" data-toggle="tooltip" data-placement="top" title="Xem">
+                                            <i class="zmdi zmdi-eye"></i>
+                                        </a>
+                                        <a href="/Admin/Cartelogy/Edit?MaHD=@item.MaHD" class="item" data-toggle="tooltip" data-placement="top" title="Sửa">
+                                            <i class="zmdi zmdi-edit"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- END DATA TABLE -->
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<form class="changekeyform" action="/Admin/Cartelogy/Index" method="get">
+    <input type="text" class="changekey" hidden name="q" />
+</form>
+<script>
+    function change() {
+        var value = document.querySelector('.js-select2').value;
+        var q = document.querySelector('.changekey');
+        q.value = value;
+        document.querySelector('.changekeyform').submit();
+    }
+</script>

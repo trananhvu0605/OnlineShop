@@ -1,0 +1,108 @@
+﻿@model IEnumerable<Model.EF.ChiTiet_HD>
+
+@{
+    ViewBag.Title = "DetailOrder";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Styles{
+    <link rel="stylesheet" type="text/css" href="~/wwwroot/css/detailorder.css" />
+}
+<div class="content">
+    <div class="content_left" style="height: 500px; overflow-y: hidden;">
+        <div class="title_content-left">
+
+            <h4> <i class="fas fa-bars"></i> DANH MỤC SẢN PHẨM</h4>
+        </div>
+        @{
+            Html.RenderAction("ProductCartelogy", "Home");
+        }
+
+
+    </div>
+    <div class="content_right">
+
+        <h3 class="content_right-title">Chi tiết đơn hàng</h3>
+        <div class="content_customer">
+            <form action="" class="form_infor">
+                <div class="form_infor-input">
+                    <label class="lable">Mã đơn hàng: </label>
+                    <span>@ViewBag.mahd</span>
+
+                </div>
+                <div class="form_infor-input">
+                    <label class="lable">Tên khách hàng:</label>
+                    <span>@ViewBag.tenkhach</span>
+                </div>
+                <div class="form_infor-input">
+                    <label class="lable">
+                        Địa chỉ nhận hàng :
+
+                    </label>
+                    <span>@ViewBag.diachi</span>
+
+                </div>
+                <div class="form_infor-input">
+                    <label class="lable">Số điện thoại:</label>
+                    <span>@ViewBag.sdt</span>
+                </div>
+                <div class="form_infor-input">
+                    <label class="lable">Yêu cầu khác:</label>
+                    <span>@ViewBag.yeucaukhac</span>
+                </div>
+                <div class="form_infor-input">
+                    <label class="lable">Ngày mua:</label>
+                    <span>@ViewBag.ngaymua</span>
+                </div>
+                <div class="form_infor-input">
+                    <label class="lable">Tổng tiền:</label>
+                    <span>@ViewBag.tongtien</span>
+                </div>
+            </form>
+            <div id="table-wrapper">
+                <div id="table-scroll">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="text">Mã sản phẩm</th>
+                                <th class="text">Tên sản phẩm</th>
+                                <th class="text">Ảnh sản phẩm</th>
+                                <th class="text">Số lượng mua</th>
+                                <th class="text">Đơn giá</th>
+                                <th class="text">Thành tiền</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                var view = @item.SoLuongMua * @item.SanPham.Gia_HT;
+                                <tr>
+                                    <td>@item.MaSP</td>
+                                    <td>@item.Tensanpham</td>
+                                    <td><img class="image" src="~/wwwroot/img/@item.SanPham.Anh"></td>
+                                    <td>@item.SoLuongMua</td>
+                                    <td>@Html.DisplayFor(Model => item.SanPham.Gia_HT) VNĐ</td>
+                                    <td>@string.Format("{0:#,###}", view) VNĐ</td>
+                                </tr>
+
+                            }
+                        </tbody>
+
+                    </table>
+                </div>
+                <div class="total order_pro">
+                    <div class="back">
+                        <a href="/Home/Index" class="effect_a"><i class="fas fa-angle-double-left"></i> Trở về trang chủ</a>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+
+
+</div>

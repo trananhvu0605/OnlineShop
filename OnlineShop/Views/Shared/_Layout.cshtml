@@ -1,0 +1,159 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link href="~/wwwroot/css/jquery-ui.css" rel="stylesheet" />
+    @RenderSection("Styles", required: false)
+
+
+
+    <title>Klever Fruit</title>
+</head>
+
+<body>
+
+    <div id="website">
+        <div class="header">
+            <div class="header_brand">
+                <div class="header_brand-logo">
+                    <a href="/Home/Index"><img src="~/wwwroot/img/logoClient.png" class="logo_img" /></a>
+
+                    
+                </div>
+                <div class="header_right" style="width:30%;">
+                    <ul class="header_right-nav">
+                        @if (ViewBag.name != null)
+                        {
+                            <li>
+                                <a href="/Cart/Index" class="header_right-nav--link">Giỏ hàng</a>
+                                <i class="fas fa-cart-plus"></i>
+                            </li>
+                            <li class="user">
+
+                                <i class="fas fa-user"></i>
+                                <a href="#" class="header_right-nav--link">@ViewBag.name</a>
+                                <ul class="header_right-nav-submenu" style="width: 86%;margin-left:auto">
+                                    <li><a href="/Home/EditAcc/?userName=@ViewBag.userName">Sửa thông tin</a></li>
+                                    <li><a href="/Home/EditPassAcc/?userName=@ViewBag.userName">Đổi mật khẩu</a></li>
+                                    <li><a href="/Login/Logout">Thoát <i class="fas fa-sign-out-alt"></i></a></li>
+                                </ul>
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <a href="/Login/LoginClient" class="header_right-nav--link">Đăng nhập</a>
+                                <i class="fas fa-sign-in-alt"></i>
+                            </li>
+
+                            <li>
+                                <a href="/Cart/Index" class="header_right-nav--link">Giỏ hàng</a>
+                                <i class="fas fa-cart-plus"></i>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div class="header_nav">
+                <ul class="header_navbar">
+                    <li class="header_navbar-item">
+                        <i class="fas fa-home"></i>
+                        <a href="/Home/Index" class="header_navbar-item--link ">Trang chủ</a>
+                    </li>
+                    <li class="header_navbar-item">
+                        <a href="/Home/Index" class="header_navbar-item--link">Sản Phẩm</a>
+                    </li>
+                    <li class="header_navbar-item">
+                        <a href="/Home/Index" class="header_navbar-item--link">Giới thiệu</a>
+                    </li>
+                    <li class="header_navbar-item">
+                        <a href="/Home/Index" class="header_navbar-item--link">Liên hệ</a>
+                    </li>
+                </ul>
+                <div class="header_navbar-search">
+                    <form action="/Home/Search" method="GET" class="box_search">
+                        <input type="text" id="txtKeyword" name="keyword" placeholder="Tìm kiếm ..." />
+                        <input type="submit" value="" hidden />
+                    </form>
+                    <div class="icon_search"><i class="fas fa-search"></i></div>
+
+                </div>
+
+            </div>
+        </div>
+        @RenderBody()
+        <div class="footer">
+
+            <h5><i class="fas fa-map-marker-alt"></i>Hệ Thống Trái Cây Tươi <a href="#" class="footer_link">Klever Fruits</a></h5>
+            <div class="footer_row">
+                <h6>Q.Hoàn Kiếm</h6>
+                <ul>
+                    <li><a href="#">71AB Hai Bà Trưng: 024 36320669/ 0961205601</a></li>
+                    <li><a href="#">71AB Hai Bà Trưng: 024 36320669/ 0961205601</a></li>
+                    <li><a href="#">71AB Hai Bà Trưng: 024 36320669/ 0961205601</a></li>
+                </ul>
+
+            </div>
+            <div class="footer_row">
+                <h6>Q.Ba Đình</h6>
+                <ul>
+                    <li><a href="#">80 Sơn Tây: 02437343656/ 0972967465</a></li>
+                    <li><a href="#">32A Nguyễn Chí Thanh: 02437245423/ 0987010648</a></li>
+                    <li><a href="#">21B Phan Đình Phùng: 02437350058/ 0974149518</a></li>
+                </ul>
+                <ul>
+                    <li><a href="#">80 Sơn Tây: 02437343656/ 0972967465</a></li>
+                    <li><a href="#">32A Nguyễn Chí Thanh: 02437245423/ 0987010648</a></li>
+                    <li><a href="#">21B Phan Đình Phùng: 02437350058/ 0974149518</a></li>
+                </ul>
+                <ul>
+                    <li><a href="#">80 Sơn Tây: 02437343656/ 0972967465</a></li>
+                    <li><a href="#">32A Nguyễn Chí Thanh: 02437245423/ 0987010648</a></li>
+                    <li><a href="#">21B Phan Đình Phùng: 02437350058/ 0974149518</a></li>
+                </ul>
+
+
+            </div>
+
+            <div class="footer_row">
+                <h6>Q.Cầu Giấy</h6>
+                <ul>
+                    <li><a href="#">370 Cầu Giấy: 02437938961/ 0966769512</a></li>
+                    <li><a href="#">32A Nguyễn Chí Thanh: 02437245423/ 0987010648</a></li>
+                    <li><a href="#">21B Phan Đình Phùng: 02437350058/ 0974149518</a></li>
+                </ul>
+                <ul>
+                    <li><a href="#">52 Nguyễn Chánh: 02432262443/ 0979563045</a></li>
+                    <li><a href="#">32A Nguyễn Chí Thanh: 02437245423/ 0987010648</a></li>
+                    <li><a href="#">21B Phan Đình Phùng: 02437350058/ 0974149518</a></li>
+                </ul>
+                <ul>
+                    <li><a href="#">80 Sơn Tây: 02437343656/ 0972967465</a></li>
+                    <li><a href="#">32A Nguyễn Chí Thanh: 02437245423/ 0987010648</a></li>
+                    <li><a href="#">21B Phan Đình Phùng: 02437350058/ 0974149518</a></li>
+                </ul>
+
+
+            </div>
+            <h4>CÔNG TY CỔ PHẦN THƯƠNG MẠI VÀ ĐẦU TƯ K.L.E.V.E </h4>
+
+
+        </div>
+    </div>
+    <script src="~/wwwroot/vendor/jquery-3.2.1.min.js"></script>
+    <script src="~/wwwroot/vendor/jquery-ui.min.js"></script>
+    <script src="~/wwwroot/js/Search.js"></script>
+    @RenderSection("Script", required: false)
+</body>
+
+</html>

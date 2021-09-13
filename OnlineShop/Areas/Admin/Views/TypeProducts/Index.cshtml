@@ -1,0 +1,89 @@
+﻿@model IEnumerable<Model.EF.DanhMuc>
+@{
+    ViewBag.Title = "Quản lý loại sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- DATA TABLE -->
+                    <h3 class="title-5 m-b-35">Quản lý loại sản phẩm</h3>
+                    <div class="table-data__tool">
+                        <div class="table-data__tool-left">
+                            <div class="rs-select2--light rs-select2--md">
+                                <select class="js-select2" name="property" onchange='change()'>
+                                    <option selected="selected">Tất cả</option>
+                                    <option value="MaDM">Mã loại</option>
+                                    <option value="TenDM">Tên loại</option>
+                                </select>
+                                <div class="dropDownSelect2"></div>
+                            </div>
+                            <button class="au-btn-filter">
+                                <i class="zmdi zmdi-filter-list"></i>Sắp xếp
+                            </button>
+                        </div>
+                        <div class="table-data__tool-right">
+                            <a style="color:#fff" href="/Admin/TypeProducts/Create" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                                <i class="zmdi zmdi-plus"></i>Thêm loại
+                            </a>
+                        </div>
+                    </div>
+                    <div class="table-responsive table--no-card m-b-40">
+                        <table class="table table-borderless table-striped table-earning">
+                            <thead>
+                                <tr>
+                            <thead>
+                                <tr>
+                                    <th>Mã loại</th>
+                                    <th>Tên Loại</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.MaDM</td>
+                                        <td>
+                                            <span style="padding: 0px;" class="block-email">@item.TenDM</span>
+                                        </td>
+                                        <td>
+                                            <div class="table-data-feature">
+                                                <a href="/Admin/TypeProducts/Detail?maDM=@item.MaDM" class="item" data-toggle="tooltip" data-placement="top" title="Xem">
+                                                    <i class="zmdi zmdi-eye"></i>
+                                                </a>
+                                                <a href="/Admin/TypeProducts/Edit?maDM=@item.MaDM" class="item" data-toggle="tooltip" data-placement="top" title="Sửa">
+                                                    <i class="zmdi zmdi-edit"></i>
+                                                </a>
+                                                <a href="/Admin/TypeProducts/Delete?maDM=@item.MaDM" class="item" data-toggle="tooltip" data-placement="top" title="Xóa">
+                                                    <i class="zmdi zmdi-delete"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<form class="changekeyform" action="/Admin/TypeProducts/Index" method="get">
+    <input type="text" class="changekey" hidden name="q" />
+</form>
+<script>
+    function change() {
+        var value = document.querySelector('.js-select2').value;
+        var q = document.querySelector('.changekey');
+        q.value = value;
+        document.querySelector('.changekeyform').submit();
+    }
+</script>
+

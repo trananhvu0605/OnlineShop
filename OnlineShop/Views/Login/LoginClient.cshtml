@@ -1,0 +1,70 @@
+﻿@model OnlineShop.Models.LoginModel
+
+@{
+    ViewBag.Title = "LoginClient";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Styles{
+    <link rel="stylesheet" type="text/css" href="~/wwwroot/css/detail.css" />
+    <link rel="stylesheet" type="text/css" href="~/wwwroot/css/order.css" />
+}
+<div class="content">
+    <div class="content_left" style="height: 500px; overflow-y: hidden;">
+        <div class="title_content-left">
+
+            <h4> <i class="fas fa-bars"></i> DANH MỤC SẢN PHẨM</h4>
+        </div>
+        @{
+            Html.RenderAction("ProductCartelogy", "Home");
+        }
+
+
+    </div>
+    <div class="content_right">
+        <h3 class="content_right-title">Đăng nhập</h3>
+        <div class="content_customer">
+            @using (Html.BeginForm("LoginClient", "Login", FormMethod.Post, htmlAttributes: new { @class = "form_infor", @style = "text-align: center;" }))
+            {
+                @Html.ValidationSummary(false, "")
+                <div class="form_infor-input">
+                    @Html.LabelFor(model => model.userName, "Tên tài khoản", htmlAttributes: new { @class = "lable" })
+                    @Html.TextBoxFor(model => model.userName, htmlAttributes: new { @class = "text userName", @placeholder = "Tên tài khoản", @style = "padding-left: 5px;outline: none; " })
+
+                </div>
+                <div class="form_infor-input">
+                    @Html.LabelFor(model => model.Password, "Mật khẩu", htmlAttributes: new { @class = "lable" })
+                    @Html.PasswordFor(model => model.Password, htmlAttributes: new { @class = "text Password", @placeholder = "Mật khẩu", @style = "padding-left: 5px;outline: none; " })
+
+                </div>
+                <button class="loginbtn" type="submit" style="width: 80px;height: 32px;border: none;background-color: #92278f;color: #fff;font-size: 14px;">
+                    Đăng nhập
+                </button>
+                <a href="/Login/RegisterClient" style=" text-decoration: none; font-size: 15px;">| Đăng ký</a>
+            }
+        </div>
+
+
+    </div>
+
+
+
+</div>
+<script>
+    var loginbtn = document.querySelector('.loginbtn');
+    var userName = document.querySelector('.userName');
+    var password = document.querySelector('.Password');
+    loginbtn.addEventListener('click', () => {
+        if (userName.value == '') {
+            loginbtn.type = 'button';
+            alert('Vui lòng nhập tên tài khoản')
+        }
+        else if (password.value == '') {
+            loginbtn.type = 'button';
+            alert('Vui lòng nhập mật khẩu')
+        }
+        else {
+            loginbtn.type = 'submit';
+        }
+    })
+</script>
+
